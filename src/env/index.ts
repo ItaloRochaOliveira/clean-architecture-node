@@ -6,9 +6,10 @@ const envSchema = z.object({
     
     MYSQL_HOST: z.string(),
     MYSQL_PORT:z.coerce.number(),
-    MYSQL_USERNAME: z.string(),
+    // DB_PASS: z.coerce.number(),
+    MYSQL_USER: z.string(),
     MYSQL_PASSWORD: z.string(),
-    MYSQL_DATABASE: z.string()
+    DB_DATABASE: z.string()
 });
 
 const _env = envSchema.safeParse(process.env);

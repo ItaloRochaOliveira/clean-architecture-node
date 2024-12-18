@@ -1,7 +1,8 @@
-import { Column, Entity, Index } from "typeorm";
+import { Column, Entity, Index, OneToMany } from "typeorm";
+import { Products } from "./Products";
 
 @Index("email", ["email"], { unique: true })
-@Entity("users", { schema: "TYPE-ORM-E-DOCKER-SQL" })
+@Entity("users", { schema: "consulta-SQL" })
 export class Users {
   @Column("varchar", { primary: true, name: "id", length: 36 })
   id: string;
@@ -17,6 +18,9 @@ export class Users {
 
   @Column("varchar", { name: "created_at", nullable: true, length: 24 })
   createdAt: string | null;
+
+  @OneToMany(() => Products, (product) => product.user)
+  products?: Products[];
 
 
     constructor(
