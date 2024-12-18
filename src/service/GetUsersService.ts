@@ -5,7 +5,7 @@ export default class GetUsersService{
         private readonly usersRepository: UsersRepository
     ){};
 
-    async execute(){
-
+    async execute(id: string){
+        return this.usersRepository.getById(id);
     }
 }
